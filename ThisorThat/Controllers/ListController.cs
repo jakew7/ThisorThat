@@ -12,5 +12,18 @@ namespace ThisorThat.Controllers
         {
             return View();
         }
+
+        public IActionResult Browse(string list)
+        {
+
+            if(list ==null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.list = list;
+
+            return View();
+        }
     }
 }

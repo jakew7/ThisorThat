@@ -10,6 +10,7 @@ namespace ThisorThat.Controllers
     {
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -23,6 +24,11 @@ namespace ThisorThat.Controllers
 
             ViewBag.list = list;
 
+            return View();
+        }
+
+        public IActionResult Create ()
+        {
             return View();
         }
     }

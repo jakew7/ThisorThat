@@ -8,7 +8,8 @@ namespace ThisorThat.Models
 {
     public class List
     {
-        
+        public int ListId { get; set; }
+
         [Required(ErrorMessage = "Please fill this field out!")]
 
         public string Name { get; set; }

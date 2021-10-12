@@ -18,8 +18,7 @@ namespace ThisorThat.Models
         [Required]
         public string LastName  { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+        
     }
 }
 

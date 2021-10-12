@@ -8,16 +8,16 @@ namespace ThisorThat.Models
 {
     public class List
     {
-        [Range(1, 99999)]
-        [Display(Name = "List Id")]
-        public int ListId { get; set; }
-
+        
         [Required(ErrorMessage = "Please fill this field out!")]
 
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please fill this field out!")]
         public string Description { get; set; }
+
+        //child reference for Items
+        public List<Item> Items { get; set; }
 
     }
 }

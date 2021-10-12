@@ -8,6 +8,8 @@ namespace ThisorThat.Models
 {
     public class Item
     {
+        public int ItemId { get; set; }
+
         [Required]
         public string ItemName { get; set; }
 
@@ -16,6 +18,16 @@ namespace ThisorThat.Models
 
         [Required]
         public string Brand { get; set; }
+       
+        [Required]
+        public int ListId { get; set; }
+
+        [Required]
+        public string Photo { get; set; }
+
+        //Parent reference for List
+        public List List { get; set; }
+
 
     }
 }

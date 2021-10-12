@@ -16,5 +16,8 @@ namespace ThisorThat.Models
 
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please fill this field out!")]
+        public string Description { get; set; }
+
     }
 }

@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace ThisorThat.Models
 {
-    public class Post
+    public class Item
     {
-        public int PostId { get; set; }
-
-        public DateTime PostDate { get; set; }
+        [Required]
+        public string ItemName { get; set; }
 
         [Required]
-        public string FirstName { get; set; }
+        public string ItemDescription { get; set; }
 
         [Required]
-        public string LastName  { get; set; }
+        public string Brand { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
     }
 }
-

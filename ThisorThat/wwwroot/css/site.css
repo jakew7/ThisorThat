@@ -2,14 +2,28 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    
+}
+
+.navbar-dark{
+    background-color:gold;
+    
+}
+
+body {
+    background-image: url(https://i.ytimg.com/vi/66oSX_zVvc8/maxresdefault.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: white;
+    
 }
 
 .btn-primary {
@@ -56,6 +70,7 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+
 }
 
 body {

@@ -26,7 +26,7 @@ namespace ThisorThat.Models
         public string Photo { get; set; }
 
         //Parent reference for List
-        public List List { get; set; }
+        public List<Item> Items { get; set; }
 
 
     }

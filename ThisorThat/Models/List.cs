@@ -18,7 +18,8 @@ namespace ThisorThat.Models
         public string Description { get; set; }
 
         //child reference for Items
-        public List<Item> Items { get; set; }
+        public Item Item { get; set; }
+        
 
     }
 }

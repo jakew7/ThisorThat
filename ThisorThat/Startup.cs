@@ -32,9 +32,19 @@ namespace ThisorThat
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            // enable Role Managment for Authorization
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            //this enabled the google sign in feature
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = Configuration.GetValue<string>("Authentication:Google:ClientId");
+                    options.ClientSecret = Configuration.GetValue<string>("Authentication:Google:ClientSecret");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

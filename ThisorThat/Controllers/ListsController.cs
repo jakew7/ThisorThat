@@ -29,7 +29,7 @@ namespace ThisorThat.Controllers
         }
 
         // GET: Lists/Details/5
-        [AllowAnonymous]
+        [AllowAnonymous] //makes public
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

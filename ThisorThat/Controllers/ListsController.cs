@@ -29,7 +29,7 @@ namespace ThisorThat.Controllers
         }
 
         // GET: Lists/Details/5
-        [AllowAnonymous] //makes public
+        [AllowAnonymous] // this makes public to anonymous users
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

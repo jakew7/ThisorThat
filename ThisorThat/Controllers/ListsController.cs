@@ -34,7 +34,7 @@ namespace ThisorThat.Controllers
             }
 
             var list = await _context.Lists
-                .FirstOrDefaultAsync(m => m.ListId == id);
+                .FirstOrDefaultAsync(m => m.ListItId == id);
             if (list == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace ThisorThat.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ListId,Name,Description")] List list)
+        public async Task<IActionResult> Create([Bind("ListItId,Name,Description")] ListIt list)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace ThisorThat.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ListId,Name,Description")] List list)
+        public async Task<IActionResult> Edit(int id, [Bind("ListItId,Name,Description")] ListIt list)
         {
-            if (id != list.ListId)
+            if (id != list.ListItId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace ThisorThat.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ListExists(list.ListId))
+                    if (!ListExists(list.ListItId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace ThisorThat.Controllers
             }
 
             var list = await _context.Lists
-                .FirstOrDefaultAsync(m => m.ListId == id);
+                .FirstOrDefaultAsync(m => m.ListItId == id);
             if (list == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace ThisorThat.Controllers
 
         private bool ListExists(int id)
         {
-            return _context.Lists.Any(e => e.ListId == id);
+            return _context.Lists.Any(e => e.ListItId == id);
         }
     }
 }

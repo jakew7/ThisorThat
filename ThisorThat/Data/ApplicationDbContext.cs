@@ -10,7 +10,7 @@ namespace ThisorThat.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         // database connection
-        public DbSet<List> Lists { get; set; }
+        public DbSet<ListIt> Lists { get; set; }
         public DbSet<Item> Items { get; set; }
 
 

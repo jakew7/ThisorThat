@@ -234,14 +234,11 @@ namespace ThisorThat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ItemId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("ItemName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ListId")
+                    b.Property<int>("ListItId")
                         .HasColumnType("int");
 
                     b.Property<string>("Photo")
@@ -250,17 +247,14 @@ namespace ThisorThat.Data.Migrations
 
                     b.HasKey("ItemId");
 
-                    b.HasIndex("ItemId1");
-
-                    b.HasIndex("ListId")
-                        .IsUnique();
+                    b.HasIndex("ListItId");
 
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("ThisorThat.Models.List", b =>
+            modelBuilder.Entity("ThisorThat.Models.ListIt", b =>
                 {
-                    b.Property<int>("ListId")
+                    b.Property<int>("ListItId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -273,7 +267,7 @@ namespace ThisorThat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ListId");
+                    b.HasKey("ListItId");
 
                     b.ToTable("Lists");
                 });
@@ -331,25 +325,18 @@ namespace ThisorThat.Data.Migrations
 
             modelBuilder.Entity("ThisorThat.Models.Item", b =>
                 {
-                    b.HasOne("ThisorThat.Models.Item", null)
+                    b.HasOne("ThisorThat.Models.ListIt", "ListIt")
                         .WithMany("Items")
-                        .HasForeignKey("ItemId1");
-
-                    b.HasOne("ThisorThat.Models.List", null)
-                        .WithOne("Item")
-                        .HasForeignKey("ThisorThat.Models.Item", "ListId")
+                        .HasForeignKey("ListItId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ListIt");
                 });
 
-            modelBuilder.Entity("ThisorThat.Models.Item", b =>
+            modelBuilder.Entity("ThisorThat.Models.ListIt", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("ThisorThat.Models.List", b =>
-                {
-                    b.Navigation("Item");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ThisorThat.Models
 {
-    public class List
+    public class ListIt
     {
-        public int ListId { get; set; }
+        public int ListItId { get; set; }
 
         [Required(ErrorMessage = "Please fill this field out!")]
 
@@ -18,7 +18,7 @@ namespace ThisorThat.Models
         public string Description { get; set; }
 
         //child reference for Items
-        public Item Item { get; set; }
+        public List<Item> Items { get; set; }
         
 
     }

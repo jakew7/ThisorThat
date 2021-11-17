@@ -20,14 +20,14 @@ namespace ThisorThat.Models
         public string Brand { get; set; }
        
         [Required]
-        public int ListId { get; set; }
+        public int ListItId { get; set; }
 
         [Required]
         public string Photo { get; set; }
 
         //Parent reference for List
-        public List<Item> Items { get; set; }
+        public ListIt  ListIt { get; set; }
 
-
+        
     }
 }

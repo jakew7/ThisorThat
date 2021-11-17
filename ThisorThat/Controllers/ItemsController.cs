@@ -54,7 +54,7 @@ namespace ThisorThat.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemId,ItemName,ItemDescription,Brand,ListId,Photo")] Item item)
+        public async Task<IActionResult> Create([Bind("ItemId,ItemName,ItemDescription,Brand,ListItId,Photo")] Item item)
         {
             if (ModelState.IsValid)
             {

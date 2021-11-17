@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using ThisorThat.Models;
 
 namespace ThisorThat.Controllers
 {
+    //this makes whole controller available only to authenticated users
+    [Authorize]
     public class ListsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,6 +29,7 @@ namespace ThisorThat.Controllers
         }
 
         // GET: Lists/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

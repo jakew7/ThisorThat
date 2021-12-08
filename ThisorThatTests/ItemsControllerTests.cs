@@ -1,4 +1,6 @@
-﻿// for DbContextBuilder
+﻿// for ViewResult
+using Microsoft.AspNetCore.Mvc;
+// for DbContextBuilder
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -6,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// enables use of controllers from ThisorThat
+using ThisorThat.Controllers;
 // reference for ApplicationDbContext
 using ThisorThat.Data;
 
@@ -23,9 +27,12 @@ namespace ThisorThatTests
         public void TestInitialize()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                // unique id
+                // unique id database
                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
+            // create new database
+            _context = new ApplicationDbContext(options);
+
         }
 
 
@@ -33,13 +40,13 @@ namespace ThisorThatTests
         public void IndexLoadsIndexView()
         {
             // arrange
-            var controller = new ItemsControllerTests();
+            var controller = new ItemsController(_context);
 
             // act
-
+            var result = (ViewResult)controller.Index().Result;
 
             // assert
-
+            Assert.AreEqual("Index", result.ViewName);
 
 
         }

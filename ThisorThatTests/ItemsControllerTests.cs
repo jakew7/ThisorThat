@@ -61,7 +61,7 @@ namespace ThisorThatTests
             //second mock record
             items.Add(new Item
             {
-                ItemId = 29,
+                ItemId = 22,
                 ItemName = "Soda",
                 ItemDescription = "It is Fizzy",
                 Brand = "Cola",
@@ -72,7 +72,7 @@ namespace ThisorThatTests
             // third mock record
             items.Add(new Item
             {
-                ItemId = 22,
+                ItemId = 26,
                 ItemName = "Lemonade",
                 ItemDescription = "It is sweet",
                 Brand = "Royal",
@@ -80,7 +80,12 @@ namespace ThisorThatTests
                 ListIt = listit
             });
 
-
+            // inserts records into database
+            foreach (var item in items)
+            {
+                _context.Items.Add(item);
+            }
+            _context.SaveChanges();
 
             // create controller
             controller = new ItemsController(_context);
@@ -97,7 +102,61 @@ namespace ThisorThatTests
             // assert
             Assert.AreEqual("Index", result.ViewName);
 
+        }
 
+        [TestMethod]
+        public void IndexReturnsItems()
+            {
+            // act
+            var result = (ViewResult)controller.Index().Result;
+
+            //assert
+            CollectionAssert.AreEqual(items, (List<Item>)result.Model);
+
+
+            }
+
+        // Edit Tests
+        [TestMethod]
+        public void EditNullIdLoads404()
+        {
+            // act 
+            var result = (ViewResult)controller.Edit(null).Result;
+
+            // assert
+            Assert.AreEqual("404", result.ViewName);
+        }
+
+        
+        [TestMethod]
+        public void EditInvalidIdLoads404()
+        {
+            // act 
+            var result = (ViewResult)controller.Edit(4).Result;
+
+            // assert
+            Assert.AreEqual("404", result.ViewName);
+        }
+
+        
+        [TestMethod]
+        public void EditValidIdLoadsEditView()
+        {
+            // act 
+            var result = (ViewResult)controller.Edit(22).Result;
+
+            // assert
+            Assert.AreEqual("Edit", result.ViewName);
+        }
+
+        [TestMethod]
+        public void EditValidIdReturnsItem()
+        {
+            // act 
+            var result = (ViewResult)controller.Edit(22).Result;
+
+            // assert
+            Assert.AreEqual(items[1], result.Model);
         }
 
     }

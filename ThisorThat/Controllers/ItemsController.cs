@@ -70,15 +70,15 @@ namespace ThisorThat.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("404");
             }
 
             var item = await _context.Items.FindAsync(id);
             if (item == null)
             {
-                return NotFound();
+                return View("404");
             }
-            return View(item);
+            return View("Edit", item);
         }
 
         // POST: Items/Edit/5

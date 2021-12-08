@@ -22,7 +22,7 @@ namespace ThisorThat.Controllers
         // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Items.ToListAsync());
+            return View("Index", await _context.Items.ToListAsync());
         }
 
         // GET: Items/Details/5
